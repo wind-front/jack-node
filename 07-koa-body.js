@@ -4,9 +4,12 @@ const koaStatic = require('koa-static')
 const app = new koa()
 
 //示例七：koa-body中间件将POST数据添加到request对象当中
+//ctx.request && ctx.response内的相关属性均提供有别名，可省略request && response
+
 const body = (ctx, next) => {
-    console.log(ctx.request);
-    ctx.response.body = ctx.request.body.username
+    console.log(ctx.method);
+    console.log(ctx.type);
+    ctx.body = ctx.request.body.username
 }
 
 app.use(koaStatic('./www'));
