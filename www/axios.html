@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form action="http://localhost:8081" method="get">
+        名称：<input type="text" name="username">
+    </form>
+    <br/>
+    <button>GET提交数据</button>
+    <button>POST提交数据</button>
+    <button>GET\POST提交数据</button>
+</body>
+</html>
+<script>
+    axios.defaults.baseURL = '//localhost:8080'
+    axios.defaults.timeout = 5000
+    axios.defaults.maxContentLength = 2000
+    axios.interceptors.response.use(function (res) {
+        res.data += 'response';
+        console.log( res, 'res' )
+        return res;
+    }, function (error) {
+        return Promise.reject(error);
+    })
+</script>
+<script>
+    const btn = document.querySelectorAll('button')
+    btn[0].onclick = () => {
+        axios.get("/axiosGet")
+        .then((data) => {
+            console.log(data)
+        })
+        .catch((err) => {
+            console.log( '服务超时' )
+        })
+    }
+    btn[1].onclick = () => {
+        axios.post("/axiosPost")
+        .then((data) => {
+            console.log(data)
+        })
+        .catch((err) => {
+            console.log( err )
+        })
+    }
+    btn[2].onclick = () => {
+        axios.all([axios.get("/axiosGet"), axios.post("/axiosPost")])
+        .then((data) => {
+            console.log(data)
+        })
+        .catch((err) => {
+            console.log( err )
+        })
+    }
+</script>

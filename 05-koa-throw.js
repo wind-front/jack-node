@@ -1,6 +1,7 @@
 const koa = require('koa')
 const app = new koa()
 
+
 //示例五：错误处理：ctx.throw(404) == ctx.response.status = 404 && ctx.response.body = 'Not Found'
 //所有的中间件均包裹一层错误处理
 

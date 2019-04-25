@@ -18,7 +18,9 @@ const next2 = (ctx, next) => {
 
 const middlewares = compose([next1, next2])
 
+
 app.use(middlewares)
-app.listen(8080, () => {
-    console.log('Server start');
+const port = 8080
+app.listen(port, () => {
+    console.log('Server start listen on ' + port);
 })

@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-    <form action="http://localhost" method="POST">
+    <form action="http://localhost:8081" method="get">
         名称：<input type="text" name="username">
         <input type="submit" value="提交">
     </form>
+    <button>提交数据</button>
+    <script>
+        const btn = document.querySelector('button')
+        btn.onclick = () => {
+            $.ajax({
+                url: "localhost:8081/",
+                data: {
+                    name: 'jack',
+                    age: 15
+                },
+                success() {
+                    console.log('success');
+                },
+                error() {
+                    console.log('error');
+                }
+            })
+        }
+    </script>
 </body>
 </html>
