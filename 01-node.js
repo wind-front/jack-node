@@ -11,4 +11,4 @@ dns.lookup('localhost', (err, address, family) => {
 function fn(one, two, three) {
     console.log('My name is %a, age is %a, likes are %a',one, two, three);
 }
-fn('jack', '25', 'play')
+fn('jack', '26', 'play')
