@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
     "koa-compose": "^4.1.0",
